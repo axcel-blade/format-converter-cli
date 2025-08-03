@@ -1,9 +1,11 @@
+from VideoConverter import *
+
 class FormatConverterCLI:
     def mainMenu(self):
         isWrongChoice = True
 
         while(isWrongChoice):
-            # Menu
+            # Main menu
             print("==================================")
             print("=        Format Converter        =")
             print("==================================\n")
@@ -39,6 +41,7 @@ class FormatConverterCLI:
                 case default:
                     print(self.__str__(userChoice))
                     print("\nPlease select corrent choice from the menu\n")
+    
 
     def __str__(self,userChoice):
         return "User chose: " + userChoice
