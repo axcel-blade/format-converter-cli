@@ -1,14 +1,15 @@
-from VideoConverter import *
+import threading
+from Operations import *
 
 class FormatConverterCLI:
-    def mainMenu(self):
-        isWrongChoice = True
+    operations = Operations()
 
-        while(isWrongChoice):
+    def mainMenu(self):
+        while True:
             # Main menu
-            print("==================================")
-            print("=        Format Converter        =")
-            print("==================================\n")
+            print("==========================================================")
+            print("=                    Format Converter                    =")
+            print("==========================================================\n")
             print("Please select the type of convertion you want to run:")
             print("1) Video")
             print("2) Audio")
@@ -19,29 +20,54 @@ class FormatConverterCLI:
 
             match userChoice:
                 case '1':
-                    print(self.__str__(userChoice))
-                    isWrongChoice = False
+                    self.VideoConverterMenu()
+                    break
 
                 case '2':
                     print(self.__str__(userChoice))
-                    isWrongChoice = False
+                    break
                
                 case '3':
                     print(self.__str__(userChoice))
-                    isWrongChoice = False
+                    break
 
                 case '4':
                     print(self.__str__(userChoice))
-                    isWrongChoice = False
+                    break
 
                 case '0':
                     print(self.__str__(userChoice))
-                    isWrongChoice = False
+                    break
 
                 case default:
                     print(self.__str__(userChoice))
                     print("\nPlease select corrent choice from the menu\n")
-    
+        
+    def VideoConverterMenu(self):
+        while True:
+            # Menu
+            print("==========================================================")
+            print("=                    Video Converter                     =")
+            print("==========================================================\n")
+            print("Please select the type of convertion you want to convert:")
+            print("1) to MP4")
+            print("2) to MKV")
+            print("3) to AVI")
+            print("4) to WebM")
+            print("0) Back")
+            userChoice = input("\nChoose: ")
+
+            selectFile = self.operations.selectFile()
+            #selectOutputLocation = self.operations.outputFileLocation() + "\Output.mp4"
+
+            match userChoice:
+                case '1':
+                    self.operations.Convertion(selectFile, "Output.mp4")
+                    break
+
+                case '2':
+                    break
+
 
     def __str__(self,userChoice):
         return "User chose: " + userChoice
